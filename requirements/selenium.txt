@@ -1,0 +1,4 @@
+Pillow==2.8.1
+pyscreenshot==0.3.4
+PyVirtualDisplay==0.1.5
+selenium==2.45.0

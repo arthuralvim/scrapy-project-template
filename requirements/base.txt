@@ -1,0 +1,7 @@
+python-decouple==2.3
+raven==5.2.0
+scrapy-sentry==0.6.1
+Scrapy==0.24.5
+scrapyd==1.0.1
+service-identity==14.0.0
+Unipath==1.1

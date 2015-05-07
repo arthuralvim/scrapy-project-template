@@ -47,11 +47,20 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+# Log:
 *.log
+
+# Mac OSX
+.DS_Store
 
 # Sphinx documentation
 docs/_build/
 
 # PyBuilder
 target/
+
+# Deploy
+.vagrant
+
+# {{ project_name }}
+output/
