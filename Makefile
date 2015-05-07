@@ -3,7 +3,7 @@
 PIP=$(VIRTUAL_ENV)/bin/pip
 PY=$(VIRTUAL_ENV)/bin/python
 
-.PHONY: all clean help pep8 project_name project requirements requirements.update
+.PHONY: all clean env help pep8 project_name project requirements requirements.update
 
 all: help
 
@@ -11,11 +11,14 @@ help:
 	@echo '** Makefile **'
 
 project_name:
-	@if test "$(n)" = "" ; then echo "Project name is undefined. Set var n."; exit 1; fi
+	@if test "$(n)" = "" ; then echo "Project name is undefined. Set var n with it."; exit 1; fi
 
-project: project_name
+startproject: project_name env
 	@grep -rl '{{ project_name }}' . --exclude=Makefile | xargs sed -i '' 's/{{ project_name }}/$(n)/g'
 	@mv project_name $(n)
+
+env:
+	@cp .env-example .env
 
 requirements:
 	@$(PIP) install -r requirements.txt

@@ -63,4 +63,6 @@ target/
 .vagrant
 
 # {{ project_name }}
+.env
 output/
+media/
