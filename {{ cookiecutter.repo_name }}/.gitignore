@@ -55,3 +55,20 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# Sublime Text
+*.sublime-*
+*.todo
+
+# Others
+.DS_Store
+.env
+.vagrant
+*~
+*.pid
+
+# Project
+extra/*.csv
+output/*.html
+scrapyd_build/
+{{ cookiecutter.repo_name }}/files
