@@ -11,7 +11,7 @@ from scrapy.selector import Selector
 
 
 class LoginMixin(object):
-    login = config('login', default='test_login')
+    username = config('username', default='test_username')
     password = config('password', default='test_password')
     login_page = 'login_url'
     login_form_action = 'login_form_action'
@@ -19,7 +19,7 @@ class LoginMixin(object):
     def login(self, response):
 
         payload = {
-            'username': self.login,
+            'username': self.username,
             'password': self.password,
         }
 
