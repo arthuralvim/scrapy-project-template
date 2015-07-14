@@ -1,20 +1,29 @@
-.PHONY: clean-pyc clean-build docs clean
+# Makefile {{ cookiecutter.repo_name }}
+
+PIP=$(VIRTUAL_ENV)/bin/pip
+PY=$(VIRTUAL_ENV)/bin/python
+
+.PHONY: clean-pyc clean-build docs clean clean-others req req.update pep8
 
 help:
 	@echo "clean - remove all build, test, coverage and Python artifacts"
 	@echo "clean-build - remove build artifacts"
 	@echo "clean-pyc - remove Python file artifacts"
+	@echo "clean-others - remove Thumbs.db, etc file artifacts"
 	@echo "clean-test - remove test and coverage artifacts"
 	@echo "lint - check style with flake8"
+	@echo "pep8 - check style with pep8"
 	@echo "test - run tests quickly with the default Python"
 	@echo "test-all - run tests on every Python version with tox"
 	@echo "coverage - check code coverage quickly with the default Python"
+	@echo "req - install project requirements"
+	@echo "req.update - update project requirements"
 	@echo "docs - generate Sphinx HTML documentation, including API docs"
 	@echo "release - package and upload a release"
 	@echo "dist - package"
 	@echo "install - install the package to the active Python's site-packages"
 
-clean: clean-build clean-pyc clean-test
+clean: clean-build clean-others clean-pyc clean-test
 
 clean-build:
 	rm -fr build/
@@ -22,6 +31,9 @@ clean-build:
 	rm -fr .eggs/
 	find . -name '*.egg-info' -exec rm -fr {} +
 	find . -name '*.egg' -exec rm -f {} +
+
+clean-others:
+	find . -name 'Thumbs.db' -exec rm -f {} \;
 
 clean-pyc:
 	find . -name '*.pyc' -exec rm -f {} +
@@ -35,7 +47,7 @@ clean-test:
 	rm -fr htmlcov/
 
 lint:
-	flake8 {{ cookiecutter.repo_name }} tests
+	flake8 vin-delphos tests
 
 test:
 	python setup.py test
@@ -44,18 +56,27 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source {{ cookiecutter.repo_name }} setup.py test
+	coverage run --source vin-delphos setup.py test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
 
 docs:
-	rm -f docs/{{ cookiecutter.repo_name }}.rst
+	rm -f docs/vin-delphos.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ {{ cookiecutter.repo_name }}
+	sphinx-apidoc -o docs/ vin-delphos
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html
+
+req:
+	@$(PIP) install -r requirements.txt
+
+req.update:
+	@$(PIP) install -U -r requirements.txt
+
+pep8:
+	@pep8 --filename="*.py" --ignore=W --first --show-source --statistics --count
 
 release: clean
 	python setup.py sdist upload
