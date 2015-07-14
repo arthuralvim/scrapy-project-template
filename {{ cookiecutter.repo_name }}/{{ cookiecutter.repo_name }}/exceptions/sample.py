@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .constants import ERROR_MSG
+from .messages import ERROR_MSG
 
 
 class SampleErrorException(Exception):

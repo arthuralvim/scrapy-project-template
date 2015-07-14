@@ -8,7 +8,7 @@ from sqlalchemy import DateTime
 from sqlalchemy import Integer
 from sqlalchemy import String
 
-__all__ = ['SpiderJob', ]
+__all__ = ['SpiderJob', 'SpiderOtherJob']
 
 
 class SpiderJob(Base):
@@ -43,3 +43,11 @@ class SpiderJob(Base):
 
     def __repr__(self):
         return u'<SpiderJob id:{0}>'.format(self.job_id)
+
+
+class SpiderOtherJob(Base):
+    __tablename__ = "spider_other_job"
+    __table_args__ = {'autoload': True}
+
+    def __repr__(self):
+        return u'<SpiderOtherJob id:{0}>'.format(self.job_id)

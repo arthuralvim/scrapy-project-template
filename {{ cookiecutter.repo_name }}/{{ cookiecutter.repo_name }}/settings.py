@@ -1,21 +1,21 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy - {{ project_name }}
+# Scrapy - {{ cookiecutter.repo_name }}
 
 from decouple import config
 from unipath import Path
 
-PROJECT_NAME = '{{ project_name }}'
+PROJECT_NAME = '{{ cookiecutter.repo_name }}'
 PROJECT_PATH = Path(__file__).absolute().ancestor(1)
-SPIDER_MODULES = ['{{ project_name }}.spiders']
-NEWSPIDER_MODULE = '{{ project_name }}.spiders'
-BOT_NAME = config('BOT_NAME', default='{{ project_name }}')
-USER_AGENT = config('USER_AGENT', default='Spider - {{ project_name }}')
+SPIDER_MODULES = ['{{ cookiecutter.repo_name }}.spiders']
+NEWSPIDER_MODULE = '{{ cookiecutter.repo_name }}.spiders'
+BOT_NAME = config('BOT_NAME', default='{{ cookiecutter.repo_name }}')
+USER_AGENT = config('USER_AGENT', default='Spider - {{ cookiecutter.repo_name }}')
 
 # LOGS
 
 LOG_ENABLED = config('LOG_ENABLED', default=False, cast=bool)
-LOG_FILE = config('LOG_FILE', default='scrapy-{{ project_name }}.log')
+LOG_FILE = config('LOG_FILE', default='scrapy-{{ cookiecutter.repo_name }}.log')
 
 # AUTOTHROTTLE
 
@@ -41,7 +41,7 @@ CONCURRENT_REQUESTS_PER_IP = config('CONCURRENT_REQUESTS_PER_IP', default=2,
 # MIDDLEWARES
 
 # SPIDER_MIDDLEWARES = {
-#     '{{ project_name }}.middlewares.SpiderJobMiddleware': 500,
+#     '{{ cookiecutter.repo_name }}.middlewares.SpiderJobMiddleware': 500,
 # }
 
 # DATABASE
@@ -58,7 +58,7 @@ CONCURRENT_REQUESTS_PER_IP = config('CONCURRENT_REQUESTS_PER_IP', default=2,
 # PIPELINES
 
 # ITEM_PIPELINES = {
-#     '{{ project_name }}.pipelines.SamplePipeline': 500,
+#     '{{ cookiecutter.repo_name }}.pipelines.SamplePipeline': 500,
 # }
 
 # FILE STORAGE
